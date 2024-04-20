@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/build-fmt-output-name/release/baselineProfiles
+/app/build-fmt-output-name

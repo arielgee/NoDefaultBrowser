@@ -34,18 +34,22 @@ public class MainActivity extends Activity {
 
             if (intent.resolveActivity(pm) != null) {
                 String defBrowserPackName = intent.resolveActivity(pm).getPackageName();
+                boolean isDefBrowser = defBrowserPackName.equals(getApplicationContext().getPackageName());
 
-                if ( !defBrowserPackName.equals(getApplicationContext().getPackageName()) ) {
-                    Toast.makeText(this, "Set NoDefaultBrowser as default browser", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(this, "No URL received", Toast.LENGTH_LONG).show();
-                }
+                Toast.makeText(this, (isDefBrowser ? "No URL received" : "Set NdB as your default browser"), Toast.LENGTH_LONG).show();
             }
             finishAndRemoveTask();
         } else {
             m_browserListView = findViewById(R.id.browserListView);
             loadBrowsers();
         }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAndRemoveTask();
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,6 +63,13 @@ public class MainActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
+        finishAndRemoveTask();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         finishAndRemoveTask();
     }
 
