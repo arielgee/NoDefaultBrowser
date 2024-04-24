@@ -9,14 +9,15 @@ android {
     namespace = "com.arielg.nodefaultbrowser"
     compileSdk = 34
     val vApkBaseFileName = "NoDefaultBrowser"
-    val vVersionName = "1.0"
+    val vVersionCode = 2        // positive integer. Internal version number - determine whether one version is more recent than another
+    val vVersionName = "1.1"    // string. App "regular" version
     val vBuildTimestamp = SimpleDateFormat("yyyyMMdd-HHmmss").format(Date())
 
     defaultConfig {
         applicationId = "com.arielg.nodefaultbrowser"
         minSdk = 34
         targetSdk = 34
-        versionCode = 1
+        versionCode = vVersionCode
         versionName = vVersionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
